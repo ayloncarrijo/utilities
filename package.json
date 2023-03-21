@@ -3,6 +3,7 @@
   "name": "@ayloncarrijo/utilities",
   "license": "ISC",
   "type": "module",
+  "prettier": "@ayloncarrijo/prettier-config",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
@@ -12,7 +13,12 @@
     "commit": "cz"
   },
   "devDependencies": {
+    "@ayloncarrijo/eslint-config": "^1.7.2",
+    "@ayloncarrijo/prettier-config": "^1.0.2",
+    "@ayloncarrijo/typescript-config": "^2.0.3",
     "commitizen": "^4.3.0",
-    "cz-conventional-changelog": "^3.3.0"
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.36.0",
+    "typescript": "4.9.5"
   }
 }
