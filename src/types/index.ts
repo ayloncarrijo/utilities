@@ -1,3 +1,19 @@
+export type ObjectFromEntries<
+  T extends ReadonlyArray<readonly [PropertyKey, unknown]>
+> = {
+  [K in T[number][0]]: ([K, T[number][1]] & T[number])[1];
+};
+
+export type Entries<T> = Array<
+  {
+    [K in keyof T]: [K, T[K]];
+  }[keyof T]
+>;
+
+export type LeftJoin<L, R> = L & Omit<R, keyof L>;
+
+export type RightJoin<L, R> = R & Omit<L, keyof R>;
+
 export type Primitive =
   | string
   | number
@@ -6,3 +22,9 @@ export type Primitive =
   | symbol
   | undefined
   | null;
+
+export type UnionToIntersection<T> = (
+  T extends unknown ? (arg: T) => void : never
+) extends (arg: infer U) => void
+  ? U
+  : never;
