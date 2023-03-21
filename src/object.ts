@@ -25,6 +25,24 @@ export const mergeDeeply = <T extends Array<Record<string, unknown>>>(
   }, {}) as UnionToIntersection<T[number]>;
 };
 
+export const pick = <T extends object, K extends keyof T>(
+  obj: T,
+  keys: Array<K>
+): Pick<T, K> => {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([key]) => keys.includes(key as K))
+  ) as Pick<T, K>;
+};
+
+export const omit = <T extends object, K extends keyof T>(
+  obj: T,
+  keys: Array<K>
+): Omit<T, K> => {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([key]) => !keys.includes(key as K))
+  ) as Omit<T, K>;
+};
+
 export const assign = Object.assign as <
   T extends object,
   U extends Array<unknown>
