@@ -5,9 +5,11 @@ export type ObjectFromEntries<
 };
 
 export type Entries<T> = Array<
-  {
-    [K in keyof T]: [K, T[K]];
-  }[keyof T]
+  T extends unknown
+    ? {
+        [K in keyof T]-?: [K, T[K]];
+      }[keyof T]
+    : never
 >;
 
 export type Optional<T, K extends keyof T> = Partial<Pick<T, K>> & Omit<T, K>;
