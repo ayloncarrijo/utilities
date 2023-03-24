@@ -10,6 +10,8 @@ export type Entries<T> = Array<
   }[keyof T]
 >;
 
+export type Optional<T, K extends keyof T> = Partial<Pick<T, K>> & Omit<T, K>;
+
 export type LeftJoin<L, R> = L & Omit<R, keyof L>;
 
 export type RightJoin<L, R> = R & Omit<L, keyof R>;
