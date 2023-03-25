@@ -27,18 +27,20 @@ export type Primitive =
   | undefined
   | null;
 
+export type ValueOf<T> = T[keyof T];
+
 export type IsUnion<T, True = true, False = false> = [T] extends [
   UnionToIntersection<T>
 ]
   ? False
   : True;
 
+export type NonNullableEntry<T extends [unknown, unknown]> = T extends unknown
+  ? [T[0], NonNullable<T[1]>]
+  : never;
+
 export type UnionToIntersection<T> = (
   T extends unknown ? (arg: T) => void : never
 ) extends (arg: infer U) => void
   ? U
-  : never;
-
-export type NonNullableEntry<T extends [unknown, unknown]> = T extends unknown
-  ? [T[0], NonNullable<T[1]>]
   : never;
