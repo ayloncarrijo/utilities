@@ -38,3 +38,7 @@ export type UnionToIntersection<T> = (
 ) extends (arg: infer U) => void
   ? U
   : never;
+
+export type NonNullableEntry<T extends [unknown, unknown]> = T extends unknown
+  ? [T[0], NonNullable<T[1]>]
+  : never;
