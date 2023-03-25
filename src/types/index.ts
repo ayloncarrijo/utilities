@@ -27,6 +27,12 @@ export type Primitive =
   | undefined
   | null;
 
+export type IsUnion<T, True = true, False = false> = [T] extends [
+  UnionToIntersection<T>
+]
+  ? False
+  : True;
+
 export type UnionToIntersection<T> = (
   T extends unknown ? (arg: T) => void : never
 ) extends (arg: infer U) => void
