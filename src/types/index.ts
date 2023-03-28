@@ -4,13 +4,9 @@ export type ObjectFromEntries<
   [K in T[number][0]]: ([K, T[number][1]] & T[number])[1];
 };
 
-export type Entries<T> = Array<
-  T extends unknown
-    ? {
-        [K in keyof T]-?: [K, T[K]];
-      }[keyof T]
-    : never
->;
+export type NonNullableEntry<T extends [unknown, unknown]> = T extends unknown
+  ? [T[0], NonNullable<T[1]>]
+  : never;
 
 export type Optional<T, K extends keyof T> = Partial<Pick<T, K>> & Omit<T, K>;
 
@@ -35,9 +31,15 @@ export type IsUnion<T, True = true, False = false> = [T] extends [
   ? False
   : True;
 
-export type NonNullableEntry<T extends [unknown, unknown]> = T extends unknown
-  ? [T[0], NonNullable<T[1]>]
-  : never;
+export type Entries<T> = Array<
+  T extends unknown
+    ? {
+        [K in keyof T]-?: [K, T[K]];
+      }[keyof T]
+    : never
+>;
+
+export type AnyFunction = (...args: Array<never>) => unknown;
 
 export type UnionToIntersection<T> = (
   T extends unknown ? (arg: T) => void : never

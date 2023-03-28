@@ -1,4 +1,4 @@
-import type { Primitive } from "./types";
+import type { AnyFunction, Primitive } from "./types";
 
 export const isObject = (value: unknown): value is object =>
   value != null && typeof value === "object";
@@ -29,6 +29,9 @@ export const isSymbol = (value: unknown): value is symbol =>
 
 export const isDate = (value: unknown): value is Date =>
   value instanceof Date && !isNaN(value.getTime());
+
+export const isFunction = (value: unknown): value is AnyFunction =>
+  typeof value === "function";
 
 export const isPrimitive = (value: unknown): value is Primitive =>
   value == null || (typeof value !== "object" && typeof value !== "function");
