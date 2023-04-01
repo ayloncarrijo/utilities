@@ -1,4 +1,4 @@
-import type { AnyFunction, Primitive } from "./types";
+import type { AnyFunction, NonFalsy, Primitive } from "./types";
 
 export const isObject = (value: unknown): value is object =>
   value != null && typeof value === "object";
@@ -18,6 +18,9 @@ export const isArray = Array.isArray as (
   value: unknown
 ) => value is Array<unknown>;
 
+export const isDate = (value: unknown): value is Date =>
+  value instanceof Date && !isNaN(value.getTime());
+
 export const isInt = (value: unknown): value is number =>
   isNumber(value) && value % 1 === 0;
 
@@ -27,8 +30,10 @@ export const isFloat = (value: unknown): value is number =>
 export const isSymbol = (value: unknown): value is symbol =>
   typeof value === "symbol";
 
-export const isDate = (value: unknown): value is Date =>
-  value instanceof Date && !isNaN(value.getTime());
+export const isTruthy = <T>(value: T): value is NonFalsy<T> => Boolean(value);
+
+export const isTruthyEntry = <K, V>(value: [K, V]): value is [K, NonFalsy<V>] =>
+  Boolean(value[1]);
 
 export const isFunction = (value: unknown): value is AnyFunction =>
   typeof value === "function";

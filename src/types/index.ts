@@ -4,10 +4,6 @@ export type ObjectFromEntries<
   [K in T[number][0]]: ([K, T[number][1]] & T[number])[1];
 };
 
-export type NonNullableEntry<T extends [unknown, unknown]> = T extends unknown
-  ? [T[0], NonNullable<T[1]>]
-  : never;
-
 export type Optional<T, K extends keyof T> = Partial<Pick<T, K>> & Omit<T, K>;
 
 export type LeftJoin<L, R> = L & Omit<R, keyof L>;
@@ -22,6 +18,10 @@ export type Primitive =
   | symbol
   | undefined
   | null;
+
+export type Falsy = null | undefined | false | 0 | "";
+
+export type NonFalsy<T> = Exclude<T, Falsy>;
 
 export type ValueOf<T> = T[keyof T];
 
