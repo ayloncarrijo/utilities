@@ -32,8 +32,15 @@ export const isSymbol = (value: unknown): value is symbol =>
 
 export const isTruthy = <T>(value: T): value is NonFalsy<T> => Boolean(value);
 
+export const isDefined = <T>(value: T): value is NonNullable<T> =>
+  value != null;
+
 export const isTruthyEntry = <K, V>(value: [K, V]): value is [K, NonFalsy<V>] =>
   Boolean(value[1]);
+
+export const isDefinedEntry = <K, V>(
+  value: [K, V]
+): value is [K, NonNullable<V>] => value[1] != null;
 
 export const isFunction = (value: unknown): value is AnyFunction =>
   typeof value === "function";
