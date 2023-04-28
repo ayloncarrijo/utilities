@@ -2,8 +2,8 @@
   "extends": "@ayloncarrijo/typescript-config",
   "include": ["src/**/*"],
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
+    "moduleResolution": "node",
+    "target": "es6",
     "lib": ["esnext"],
     "declaration": true
   }

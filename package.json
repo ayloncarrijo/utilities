@@ -29,19 +29,19 @@
     }
   },
   "devDependencies": {
-    "@ayloncarrijo/eslint-config": "^1.8.0",
+    "@ayloncarrijo/eslint-config": "^2.0.0",
     "@ayloncarrijo/prettier-config": "^1.0.2",
-    "@ayloncarrijo/typescript-config": "^2.0.3",
-    "@rollup/plugin-commonjs": "^24.0.1",
-    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@ayloncarrijo/typescript-config": "^3.0.0",
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.36.0",
-    "rollup": "^3.20.2",
+    "eslint": "^8.39.0",
+    "rollup": "^3.21.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-ts": "^3.2.0",
     "tslib": "^2.5.0",
-    "typescript": "4.9.5"
+    "typescript": "^5.0.4"
   }
 }
