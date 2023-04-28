@@ -9,12 +9,12 @@ export default defineConfig(({ watch }) => ({
   input: "./src/index.ts",
   output: [
     {
-      file: "./build/cjs/index.cjs",
+      file: "./build/index.cjs",
       format: "cjs",
       interop: "auto",
     },
     {
-      file: "./build/esm/index.mjs",
+      file: "./build/index.mjs",
       format: "esm",
     },
   ],
@@ -23,6 +23,10 @@ export default defineConfig(({ watch }) => ({
     external({ includeDependencies: true }),
     resolve(),
     commonjs(),
-    typescript(),
+    typescript({
+      hook: {
+        outputPath: (path) => path.replace(/d\.(m|c)ts/, "d.ts"),
+      },
+    }),
   ],
 }));
