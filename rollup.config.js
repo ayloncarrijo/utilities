@@ -20,7 +20,7 @@ export default defineConfig(({ watch }) => ({
   ],
   plugins: [
     !watch && del({ targets: "build/*" }),
-    external({ includeDependencies: true }),
+    external(),
     resolve(),
     commonjs(),
     typescript({
