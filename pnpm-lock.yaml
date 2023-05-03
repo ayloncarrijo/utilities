@@ -31,9 +31,9 @@ devDependencies:
   rollup-plugin-delete:
     specifier: ^2.0.0
     version: 2.0.0
-  rollup-plugin-peer-deps-external:
-    specifier: ^2.2.4
-    version: 2.2.4(rollup@3.21.0)
+  rollup-plugin-node-externals:
+    specifier: ^5.1.2
+    version: 5.1.2(rollup@3.21.0)
   rollup-plugin-ts:
     specifier: ^3.2.0
     version: 3.2.0(rollup@3.21.0)(typescript@5.0.4)
@@ -2854,10 +2854,11 @@ packages:
       del: 5.1.0
     dev: true
 
-  /rollup-plugin-peer-deps-external@2.2.4(rollup@3.21.0):
-    resolution: {integrity: sha512-AWdukIM1+k5JDdAqV/Cxd+nejvno2FVLVeZ74NKggm3Q5s9cbbcOgUPGdbxPi4BXu7xGaZ8HG12F+thImYu/0g==}
+  /rollup-plugin-node-externals@5.1.2(rollup@3.21.0):
+    resolution: {integrity: sha512-M32v8yPeVT0dYOYHfd6SNyl0X1xskB15jYFlwUPzIIVpLQ200KVlilbFsoNMUho4SnQuT7Di3s/aLm79bnP48w==}
+    engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: '*'
+      rollup: ^2.60.0 || ^3.0.0
     dependencies:
       rollup: 3.21.0
     dev: true

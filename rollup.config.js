@@ -2,7 +2,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import { defineConfig } from "rollup";
 import del from "rollup-plugin-delete";
-import external from "rollup-plugin-peer-deps-external";
+import externals from "rollup-plugin-node-externals";
 import typescript from "rollup-plugin-ts";
 
 export default defineConfig(({ watch }) => ({
@@ -20,7 +20,7 @@ export default defineConfig(({ watch }) => ({
   ],
   plugins: [
     !watch && del({ targets: "build/*" }),
-    external(),
+    externals(),
     resolve(),
     commonjs(),
     typescript({
