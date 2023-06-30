@@ -1,4 +1,14 @@
-export const abbreviate = (
+export const abbreviateMiddleName = (fullName: string): string =>
+  fullName
+    .split(" ")
+    .map((name, index, array) =>
+      index === 0 || index + 1 === array.length || name.length < 3
+        ? name
+        : `${name.charAt(0)}.`
+    )
+    .join(" ");
+
+export const truncate = (
   str: string,
   maxLength: number,
   omission = "..."
