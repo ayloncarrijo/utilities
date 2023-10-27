@@ -8,6 +8,10 @@ export type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
   ? Omit<T, K>
   : never;
 
+export type Mandatory<T, K extends keyof T> = T & {
+  [P in K]-?: NonNullable<T[P]>;
+};
+
 export type Optional<T, K extends keyof T> = Partial<Pick<T, K>> & Omit<T, K>;
 
 export type LeftJoin<L, R> = L & Omit<R, keyof L>;
